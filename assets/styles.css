@@ -1,0 +1,68 @@
+:root {
+  --primary-color: #1D71F2;
+  --secondary-color: #1C9CF6;
+  --tertiary-color: #19C3FB;
+  --light-color: #E3F4FE;
+  --light-yellow: #FFFAE0;
+  --yellow: #FFCD00;
+}
+
+body {
+  background: linear-gradient(var(--primary-color), var(--tertiary-color), var(--light-yellow));
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-size: cover;
+  padding: 1%;
+  margin: 1%;
+
+}
+
+.header {
+  border-bottom: .5vh solid #E3F4FE;
+  color: #E3F4FE;
+  font-weight: bolder;
+  font-size: 10vh;
+}
+
+.search-bar {
+  border-bottom:.5vh solid #E3F4FE;
+}
+
+.search-bar label {
+  font-size: 1em;
+  font-weight: bolder;
+}
+
+.button-section {
+  display: flex;
+  flex-direction: column;
+  margin: 5%;
+}
+.button-section button {
+  margin: 1%;
+  border-radius: 10px;
+}
+.display-section {
+  align-items: center;
+  justify-content: center;
+  background-color: #FFFAE0;
+  padding: 1%;
+}
+
+.day-display {
+  border: .2vh solid black;
+  padding: 1%;
+}
+.week-display {
+  flex-flow: row wrap;
+  flex-grow: 2;
+  flex-shrink: 2;
+  flex-basis: 18%;
+  justify-content: space-evenly;
+}
+
+.card {
+  margin: 1%;
+  align-content: center;
+  background-color:#1D71F2; 
+}
