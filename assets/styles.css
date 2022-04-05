@@ -1,3 +1,4 @@
+/*root properties*/
 :root {
   --primary-color: #1D71F2;
   --secondary-color: #1C9CF6;
@@ -7,6 +8,7 @@
   --yellow: #FFCD00;
 }
 
+/*body element*/
 body {
   background: linear-gradient(var(--primary-color), var(--tertiary-color), var(--light-yellow));
   background-repeat: no-repeat;
@@ -14,7 +16,6 @@ body {
   background-size: cover;
   padding: 1%;
   margin: 1%;
-
 }
 
 .header {
@@ -24,6 +25,11 @@ body {
   font-size: 10vh;
 }
 
+.container {
+  background-color: lightblue;
+}
+
+/*aside items*/
 .search-bar {
   border-bottom:.5vh solid #E3F4FE;
 }
@@ -32,26 +38,37 @@ body {
   font-size: 1em;
   font-weight: bolder;
 }
+.search-button {
+  display: flex;
+  margin: 1%;
+  border-radius: 10px;
+  margin: 5%;
+  background-color: #1D71F2;
+  color: whitesmoke;
+}
 
 .button-section {
   display: flex;
   flex-direction: column;
   margin: 5%;
 }
-.button-section button {
+
+.city-selector {
+  background-color: #E3F4FE;
   margin: 1%;
   border-radius: 10px;
 }
 .display-section {
   align-items: center;
   justify-content: center;
-  background-color: #FFFAE0;
   padding: 1%;
 }
 
 .day-display {
   border: .2vh solid black;
   padding: 1%;
+  font-weight: bolder;
+  font-size: 1em;
 }
 .week-display {
   flex-flow: row wrap;
@@ -62,7 +79,16 @@ body {
 }
 
 .card {
-  margin: 1%;
+  margin: .25%;
   align-content: center;
   background-color:#1D71F2; 
+  color: #E3F4FE;
+}
+
+#uvi-span {
+  color:#E3F4FE;
+}
+
+#current-weather {
+  text-decoration: underline;
 }
