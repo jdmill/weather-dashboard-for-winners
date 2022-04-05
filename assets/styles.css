@@ -58,6 +58,8 @@ body {
   margin: 1%;
   border-radius: 10px;
 }
+
+/*Main/Current Weather display*/
 .display-section {
   align-items: center;
   justify-content: center;
@@ -85,10 +87,12 @@ body {
   color: #E3F4FE;
 }
 
+/*uvi color selector*/
 #uvi-span {
   color:#E3F4FE;
 }
 
+/*adds underline to current weather*/
 #current-weather {
   text-decoration: underline;
 }
