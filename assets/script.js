@@ -92,7 +92,7 @@ function fetchData(city) {
       //console.log(data);
     });
 
-  //gets forecast using Lat and Lat
+  //gets forecast using Lat and Lon
   function getForecast(lat, lon) {
     var getForecastUrl =
       "https://api.openweathermap.org/data/2.5/onecall?lat=" +
@@ -134,7 +134,7 @@ function printForecast(data) {
     var humidity = "Hum: " + data.daily[i].humidity;
     
     
-    //Icon property and icon url
+    //retrieves Icon data from the api and icon url
     var weathericon = data.daily[i].weather[0].icon;
     var iconurl = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
 
