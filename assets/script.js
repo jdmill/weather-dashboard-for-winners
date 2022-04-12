@@ -130,7 +130,7 @@ function printForecast(data) {
   for (let i = 0; i < 5; i++) {
     var day = moment.unix(data.daily[i].dt).format("MM/DD/YY");
     var temp = "Temp: " + data.daily[i].temp.day;
-    var wind = "Winds: " + data.daily[i].wind_speed;
+    var wind = "Wind: " + data.daily[i].wind_speed;
     var humidity = "Hum: " + data.daily[i].humidity;
     
     
@@ -144,7 +144,7 @@ function printForecast(data) {
       wind: data.daily[i].wind_speed,
       humidity: data.daily[i].humidity,
     }
-    //adding the forecastObj to the fullForecast array for use.
+    //pushes forecastObj to the forecast array.
     forecast.push(forecastObj);
     
     //adds content to cards
