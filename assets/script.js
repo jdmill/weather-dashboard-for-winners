@@ -1,7 +1,7 @@
 var APIKey = "c05979fd50e5119c43cbd3ab81fe852f";
 var city = "";
 var todayDate = "";
-var cityList = [];
+var cityListArr = [];
 var forecast = [];
 
 var currentDay = document.getElementById("current-day-id");
@@ -33,16 +33,16 @@ function renderButtons() {
   //clears the html with an empty string so there are no duplicated buttons on new search
   buttonSection.innerHTML = "";
 
-  for (let i = 0; i < cityList.length; i++) {
+  for (let i = 0; i < cityListArr.length; i++) {
     //creates a button
     var button = document.createElement('button');
     button.classList = 'btn city-selector'
-    button.textContent = cityList[i];
+    button.textContent = cityListArr[i];
 
     //creates a click listener on buttons
     $(".city-selector").click(function () {
       var city = $(this)[0].textContent;
-      //console.log(cityList);
+      //console.log(cityListArr);
       fetchData(city);
     });
     
@@ -57,7 +57,7 @@ function init() {
   console.log(storedCities);
 
   if (storedCities !== null) {
-    cityList = storedCities;
+    cityListArr = storedCities;
   }
   //calls render buttons function
   renderButtons();
@@ -66,11 +66,11 @@ function init() {
 //updates the city list in local storage
 function storeCity(city) {
 
-  cityList.push(city);
-  console.log(cityList);
+  cityListArr.push(city);
+  console.log(cityListArr);
   //storedCities.push(cityList);
 
-  localStorage.setItem("cityList", JSON.stringify(cityList));
+  localStorage.setItem("cityList", JSON.stringify(cityListArr));
   renderButtons();
 }
 
@@ -119,7 +119,7 @@ function fetchData(city) {
   }
 }
 
-//prints the forcast data to the cards
+//prints the forecast data to the cards
 function printForecast(data) {
   //creates the icon for the current weather display
   var weathericon = data.daily[0].weather[0].icon;
@@ -131,28 +131,28 @@ function printForecast(data) {
     var day = moment.unix(data.daily[i].dt).format("MM/DD/YY");
     var temp = "Temp: " + data.daily[i].temp.day;
     var wind = "Wind: " + data.daily[i].wind_speed;
-    var humidity = "Hum: " + data.daily[i].humidity;
+    var hum = "Hum: " + data.daily[i].humidity;
     
     
     //retrieves Icon data from the api and icon url
-    var weathericon = data.daily[i].weather[0].icon;
-    var iconurl = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
+    var weatherIcon = data.daily[i].weather[0].icon;
+    var iconURL = "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
 
     // object that stores data temporarily 
     var forecastObj = {
       temp: data.daily[i].temp.day,
       wind: data.daily[i].wind_speed,
-      humidity: data.daily[i].humidity,
+      hum: data.daily[i].humidity,
     }
     //pushes forecastObj to the forecast array.
     forecast.push(forecastObj);
     
     //adds content to cards
     $("#day-" + i).html(day);
-    $("#icon-" + i).html("<img src=" + iconurl + ">");
-    $("#temp-" + i).html(temp + "°F");
-    $("#wind-" + i).html(wind + " MPH");
-    $("#humidity-" + i).html(humidity + " %");
+    $("#icon-" + i).html("<img src=" + iconURL + ">");
+    $("#temp-" + i).html(temp + "F");
+    $("#wind-" + i).html(wind + " mph");
+    $("#hum-" + i).html(hum + " %");
   }
 }
 //gets current weather element and sets data
