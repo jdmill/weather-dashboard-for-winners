@@ -28,7 +28,7 @@ $(".search-bar").submit(function (event) {
 
 
 //creates the buttons based on localstorage
-function renderButtons() {
+function rButtons() {
   
   //clears the html with an empty string so there are no duplicated buttons on new search
   buttonSection.innerHTML = "";
@@ -59,8 +59,8 @@ function init() {
   if (storedCities !== null) {
     cityListArr = storedCities;
   }
-  //calls render buttons function
-  renderButtons();
+  //calls renders buttons function
+  rButtons();
 }
 
 //updates the city list in local storage
@@ -71,7 +71,7 @@ function storeCity(city) {
   //storedCities.push(cityList);
 
   localStorage.setItem("cityList", JSON.stringify(cityListArr));
-  renderButtons();
+  rButtons();
 }
 
 //fetches data from the openweather API
@@ -109,7 +109,7 @@ function fetchData(city) {
             getElementData(data);
 
             forecast = [];
-            printForecast(data);
+            pForecast(data);
           })
         }
       })
@@ -120,7 +120,7 @@ function fetchData(city) {
 }
 
 //prints the forecast data to the cards
-function printForecast(data) {
+function pForecast(data) {
   //creates the icon for the current weather display
   var weathericon = data.daily[0].weather[0].icon;
   var iconurl = "https://openweathermap.org/img/wn/" + weathericon + "@2x.png";
@@ -128,10 +128,10 @@ function printForecast(data) {
 
   //loops through the openweather api to gather data for the forecast
   for (let i = 0; i < 5; i++) {
-    var day = moment.unix(data.daily[i].dt).format("MM/DD/YY");
-    var temp = "Temp: " + data.daily[i].temp.day;
     var wind = "Wind: " + data.daily[i].wind_speed;
+    var temp = "Temp: " + data.daily[i].temp.day;
     var hum = "Hum: " + data.daily[i].humidity;
+    var day = moment.unix(data.daily[i].dt).format("MM/DD/YY");
     
     
     //retrieves Icon data from the api and icon url
@@ -139,24 +139,24 @@ function printForecast(data) {
     var iconURL = "https://openweathermap.org/img/wn/" + weatherIcon + "@2x.png";
 
     // object that stores data temporarily 
-    var forecastObj = {
-      temp: data.daily[i].temp.day,
+    var forecastO = {
       wind: data.daily[i].wind_speed,
+      temp: data.daily[i].temp.day,
       hum: data.daily[i].humidity,
     }
-    //pushes forecastObj to the forecast array.
-    forecast.push(forecastObj);
+    //pushes forecastO to the forecast array.
+    forecast.push(forecastO);
     
     //adds content to cards
     $("#day-" + i).html(day);
-    $("#icon-" + i).html("<img src=" + iconURL + ">");
-    $("#temp-" + i).html(temp + "F");
     $("#wind-" + i).html(wind + " mph");
+    $("#temp-" + i).html(temp + "F");
     $("#hum-" + i).html(hum + " %");
+    $("#icon-" + i).html("<img src=" + iconURL + ">");
   }
 }
 //gets current weather element and sets data
-//I realize I could of done all of this using the printForecast method, but this was my first attempt and did not have the time to refactor
+//I realize I could of done all of this using the pForecast method, but this was my first attempt and did not have the time to refactor
 //Although this does pull the current day and not forecast
 function getElementData(data) {
   var uviData = data.current.uvi
